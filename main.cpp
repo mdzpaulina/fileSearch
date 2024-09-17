@@ -1,17 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <map>
 #include <string>
+#include "bubbleSort.cpp"
 
 using namespace std;
 
-//Mapa para la conversión de meses
-map<string, string> months = {
-    {"Jan", "01"}, {"Feb", "02"}, {"Mar", "03"}, {"Apr", "04"}, 
-    {"May", "05"}, {"Jun", "06"}, {"Jul", "07"}, {"Aug", "08"}, 
-    {"Sept", "09"}, {"Oct", "10"}, {"Nov", "11"}, {"Dec", "12"}
-};
+
 
 int main(){
     //Guardar el archivo para poder manipularlo
@@ -22,17 +17,29 @@ int main(){
         cout <<"Error al abrir el archivo" <<filename <<endl;
         return 1;
     }
-    vector<string> lines;
+    vector<string> dates;
     string line;
     //Almacena los datos en un vector
     while (getline(infile, line)) {
-        lines.push_back(line);  //Agrega la línea leída al vector
+        dates.push_back(line);  //Agrega la línea leída al vector
     }
     //Cierra el archivo después de leerlo
     infile.close();
 
     //Ordenar la información por fecha para realizar la búsqueda
+    BubbleSort::bubbleSort(dates);
 
+    //Crear archivo de salida de fechas ordenadas
+    string outputFilename = "bitacoraOrdenada1.3-eq#.txt";
+    ofstream outfile(outputFilename);
+
+    // Verificar si el archivo de salida se abrió correctamente
+    if (!outfile.is_open()) {
+        cout << "Error al crear el archivo de salida: " << outputFilename << endl;
+        return 1;
+    }
+    //Cerrar el archivo
+    outfile.close();
 
     return 0;
 }
