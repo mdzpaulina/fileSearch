@@ -2,15 +2,17 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include "bubbleSort.h"
+#include "quickSort.h"
 
 using namespace std;
 
 
 
-// Función para buscar registros entre fechas
+/* Función para buscar registros entre fechas
+Entra el vector con los registros leídos y los strings que contienen los límites de las fechas a encontrar.
+Regresa un vector de strings que contienen los resultados de coincidencias.*/
 vector<string> buscarPorFecha(const vector<string>& registros, const string& fechaInicio, const string& fechaFin){
-    vector<string> resultados;
+    vector<string> resultados; // Creamos nuestro vector que almacene las coincidencias
     string fechaInicioFormateada = convertirFecha(fechaInicio); // Convierte fecha inicial
     string fechaFinFormateada = convertirFecha(fechaFin); // Convierte fecha final
 
@@ -25,7 +27,10 @@ vector<string> buscarPorFecha(const vector<string>& registros, const string& fec
     return resultados;
 }
 
-// Función para escribir los resultados en un archivo
+/* Función para escribir los resultados en un archivo
+Entran las variables del vector con los resultados y la cuenta de búsquedas que lleva el usuario.
+No regresa nada, solo crea el archivo con el número de búsqueda y le muestra en pantalla al usuario.
+*/
 void escribirResultados(const vector<string>& resultados, int numBusqueda){
     string outputFilename = "salida" + to_string(numBusqueda) + "-eq#.txt";
     ofstream outfile(outputFilename);
@@ -63,7 +68,7 @@ int main(){
     infile.close();
 
     //Ordenar la información por fecha para realizar la búsqueda
-    BubbleSort::bubbleSort(dates);
+    QuickSort::quickSort(dates);
 
     //Crear archivo de salida de fechas ordenadas
     string outputFilename = "bitacoraOrdenada1.3-eq#.txt";

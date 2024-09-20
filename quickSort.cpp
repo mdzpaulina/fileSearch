@@ -1,4 +1,4 @@
-#include "bubbleSort.h"
+#include "quickSort.h"
 #include <sstream>
 #include <map>
 
@@ -16,7 +16,7 @@ string convertirFecha(const string& line) {
 }
 
 //Implementación de bubbleSort
-void BubbleSort::bubbleSort(vector<string>& lines){
+void QuickSort::quickSort(vector<string>& lines){
     int n = lines.size();
     bool intercambiado  = true;
     while (intercambiado) {
