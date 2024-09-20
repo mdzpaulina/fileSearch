@@ -6,9 +6,14 @@ using namespace std;
 
 //Clase para quickSort
 class QuickSort{
+    
     public:
-        //Función para ordenar un vector de objetos 
-        static void quickSort(vector<string> &dates);
+    static void quickSort(vector<string>& arr); // Inicializa quickSort
+    static int partition(vector<string>& arr, int low, int high);
+    static void quickSort(vector<string>& arr, int low, int high);
+    
+    private:
+    // Métodos privados para 
 };
 
 // Declarar la función convertirFecha
